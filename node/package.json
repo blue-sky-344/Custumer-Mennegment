@@ -15,5 +15,9 @@
     "url": "https://github.com/blue-sky-344/Custumer-Mennegment/issues"
   },
   "homepage": "https://github.com/blue-sky-344/Custumer-Mennegment#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "http": "^0.0.1-security"
+  }
 }
