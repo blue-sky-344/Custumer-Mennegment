@@ -21,6 +21,7 @@
     "express": "^4.21.1",
     "http": "^0.0.1-security",
     "mongo": "^0.1.0",
-    "mongodb": "^6.10.0"
+    "mongodb": "^6.10.0",
+    "uuid": "^11.0.2"
   }
 }

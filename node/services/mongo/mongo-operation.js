@@ -13,7 +13,7 @@ class MongoOperations{
     }
 
     async insertItem(item){
-        const result = await this.myCollection.inserOne(item);
+        const result = await this.myCollection.insertOne(item);
         return result;
     }
 

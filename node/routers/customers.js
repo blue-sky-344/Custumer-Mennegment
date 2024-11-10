@@ -1,8 +1,7 @@
 const express = require('express')
-//TODO this functions
-const{getAllCustomers, createCustomer,checkCustomerId} = require('./modules')
-//TODO this function
-const{checkBodyContainsKeyes} = require ('./utils.middlware')
+const{getAllCustomers, createCustomer} = require('../modules/customers')
+
+const{checkBodyContainsKeys} = require ('../utils/middleware')
 
 const router = express.Router()
 
@@ -13,11 +12,8 @@ router.get('/getAllCustomers',async(req,res)=>{
 
 router.use(express.json())
 
-router.post('/createCustomer',checkBodyContainsKeyes(['id','name','phone']),async(req,res)=>{
+router.post('/createCustomer',checkBodyContainsKeys(['userName','name','phone']),async(req,res)=>{
     try{
-    const exist = await checkCustomerId(req.body.id)
-    if (exist)
-        throw new Error("can not add this customer because id already exist")
     const customer = req.body
     const newCustomer = await createCustomer(customer)
     res.status(200).json(newCustomer)
@@ -26,3 +22,5 @@ router.post('/createCustomer',checkBodyContainsKeyes(['id','name','phone']),asyn
 }
 
 })
+
+module.exports = router
