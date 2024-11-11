@@ -8,7 +8,7 @@ const mongoConnection = new MongoOperations(MONGO_ACCOUNTANCY_DB)
 const existUserName= async (username)=>{
     try{
         mongoConnection.Collection = MONGO_CUSTOMER_COLLECTION
-        const response = await mongoConnection.find({filter:{username}})
+        const response = await mongoConnection.find({filter:{userName}})
         if(response.length>0)
             return true
         else
