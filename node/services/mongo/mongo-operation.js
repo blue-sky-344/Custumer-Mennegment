@@ -21,6 +21,19 @@ class MongoOperations{
         const result = await this.myCollection.find(filter).toArray();
         return result;
     }
+    
+    async findMax(field){
+        const projection={}
+        projection[field]=1
+      const result=await this.myCollection.find({},projection).sort({[field]:-1}).limit(1).toArray()  
+      if(result.length){  
+      return result[0][field]
+    }
+    else{
+        
+        return 0;
+    }
+}
 }
 
 module.exports = {MongoOperations}
