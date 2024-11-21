@@ -1,7 +1,26 @@
 require("dotenv").config()
 const { MongoOperations } = require("../services/mongo/mongo-operation")
-const { MONGO_EXPENSES_COLLECTION = "receipt", MONGO_ACCOUNTANCY_DB = "expenses" } = process.env
+const { MONGO_EXPENSES_COLLECTION = "expenses", MONGO_ACCOUNTANCY_DB = "expenses" } = process.env
 const mongoConnection = new MongoOperations(MONGO_ACCOUNTANCY_DB)
+const saveExpenses=async(expenses)=>{
+    try{
+        mongoConnection.Collection=MONGO_ACCOUNTANCY_DB
+        const response=await mongoConnection.insertItem(expenses)
+        const {acknowledged} = response
+        if(acknowledged)
+            return {expenses}
+        else{
+            throw new Error("failed to issue expense")
+        }
+
+    }
+    catch(error){
+        throw error
+    }
+}
+
+
+
 
 const getExpensesByMonth= async (month)=>{
     try{
@@ -47,5 +66,5 @@ const getExpensesBetweenDates= async (startDate, endDate)=>{
 
 
     
-module.exports = {getExpensesByMonth, getExpensesByYear, getExpensesBetweenDates}
+module.exports = {saveExpenses,getExpensesByMonth, getExpensesByYear, getExpensesBetweenDates}
 

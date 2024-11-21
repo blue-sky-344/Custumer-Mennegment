@@ -1,6 +1,7 @@
 
 const express = require('express')
-const {getExpensesByMonth, getExpensesByYear, getExpensesBetweenDates}=require("../modules/receipts")
+const { saveExpenses, getExpensesByMonth, getExpensesByYear, getExpensesBetweenDates } = require("../modules/expenses");
+const { checkBodyContainsKeys } = require('../utils/middleware')
 const router = express.Router()
 
 router.get('/getExpensesByMonth/:month',async (req, res)=>{
@@ -34,4 +35,16 @@ router.get('/getExpensesBetweenDates/:startDate/:endDate',async(req, res)=>{
     }
 })
 
+router.use(express.json())
+router.post('/issuingExpenses',checkBodyContainsKeys( ["date","sum","supplier","Payment","Detailes"]),async(req,res)=>{
+    try{
+        const expenses=req.body
+        const newExpenses=await saveExpenses(expenses)
+        res.status(201).json(newExpenses)
+
+    }
+    catch(error){
+        res.status(500).send(error.message)
+    }
+})
 module.exports=router
