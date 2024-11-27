@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { ReceiptComponent } from "./components/receipt/receipt.component";
 import { Receipt } from './modules/receipt.interface';
 import { paymentType } from './modules/enums';
+import { NewReceiptComponent } from "./components/new-receipt/new-receipt.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReceiptComponent],
+  imports: [ReceiptComponent, NewReceiptComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

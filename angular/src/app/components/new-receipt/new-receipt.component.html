@@ -1,0 +1,28 @@
+<p>new-receipt works!</p>
+<form novalidate>
+    <h2>Issuing A Receipt</h2>
+    <select  >
+        <option value="" disabled selected>Select a customer</option>
+        <option *ngFor="let customer of allCustomers">name: {{customer.useName}}</option>
+    </select>
+    <br>
+    <br>
+    <input type="checkbox" ><label>new customer</label>
+    <fieldset>
+        <input type="text"  [disabled]="!newCustomer" placeholder="userName" >
+        <input type="text" placeholder="name" >
+        <input type="text" placeholder="phone" >
+    </fieldset>
+    <label>date </label><input type="date">
+    <br><br>
+    <label>sum </label><input type="number" placeholder="sum" >
+    <br><br>
+    <label>payment method </label><select>
+        <option>cash</option>
+        <option>credir card</option>
+        <option>Bank Transfer</option>
+    </select>
+    <br><br>
+    <label>details </label><input type="text" placeholder="details" >
+
+</form>
