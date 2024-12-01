@@ -7,3 +7,10 @@ export interface Receipt{
     paymentMethod?: paymentType
     details:string
 }
+
+export interface Customer{
+    useName:string
+    name:string
+    phone:string
+    email?:string
+}
