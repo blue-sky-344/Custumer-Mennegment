@@ -4,6 +4,7 @@ import { ReceiptComponent } from "./components/receipt/receipt.component";
 import { Receipt } from './modules/receipt.interface';
 import { paymentType } from './modules/enums';
 import { ReceiptsComponent } from "./components/receipts/receipts.component";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +15,8 @@ import { ReceiptsComponent } from "./components/receipts/receipts.component";
 })
 export class AppComponent {
   title = 'angular';
+  public obsevable:Observable<any> = new Observable((observer)=>{
+    
+  })
 
 }
