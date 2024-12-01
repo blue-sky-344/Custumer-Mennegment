@@ -13,8 +13,7 @@ import { ReceiptsService } from '../../services/receipts.service';
   styleUrl: './receipts.component.scss'
 })
 export class ReceiptsComponent {
-  constructor(private receiptsService:ReceiptsService){
-  }
+  constructor(){ }
   //template
   receiptsToDisplay: Receipt[]=[{receiptNumber:1, userName:"aam334", ammount:50, date:new Date(), paymentMethod:paymentType.CASH, details:"notebooks"}]
   public receipts:Receipt[]=[];
