@@ -1,24 +1,28 @@
-<p>new-receipt works!</p>
-<form novalidate>
+
+<form [formGroup]="myForm" (submit)="save()" id="form">
     <h2>Issuing A Receipt</h2>
-    <select  >
+    <select formControlName="customer" >
         <option value="" disabled selected>Select a customer</option>
-        <option *ngFor="let customer of allCustomers">name: {{customer.useName}}</option>
+        `@for(customer of allCustomers;track customer.useName){<option >userName: {{customer.useName}}  name: {{customer.name}}</option>}`
     </select>
+    `@if(getControlErrors('customer')?.['required']){<span class="error">*</span>}`
     <br>
     <br>
-    <input type="checkbox" ><label>new customer</label>
+    <input type="checkbox" formControlName="newCustomer"><label>new customer</label>
     <fieldset>
-        <input type="text"  [disabled]="!newCustomer" placeholder="userName" >
+        <input type="text" placeholder="userName" >
         <input type="text" placeholder="name" >
         <input type="text" placeholder="phone" >
     </fieldset>
-    <label>date </label><input type="date">
+    <label>date </label><input  formControlName="date" type="date">
+    `@if(getControlErrors('date')?.['required']){<span class="error">*</span>}`
     <br><br>
-    <label>sum </label><input type="number" placeholder="sum" >
+    <label>sum </label><input formControlName="sum" type="number">
+    `@if(getControlErrors('sum')?.['required']){<span class="error">*</span>}`
     <br><br>
-    <label>payment method </label><select>
-        <option>cash</option>
+    <label>payment method </label>
+    <select formControlName="payment">
+        <option >cash</option>
         <option>credir card</option>
         <option>Bank Transfer</option>
     </select>
@@ -26,3 +30,7 @@
     <label>details </label><input type="text" placeholder="details" >
 
 </form>
+
+
+
+
