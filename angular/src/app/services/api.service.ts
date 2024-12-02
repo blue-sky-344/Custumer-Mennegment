@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer, Receipt } from '../modules/receipt.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private baseURL = "http://localhost:3000"
-
-
+  
   constructor(private http:HttpClient) { }
+  private baseURL = "http://localhost:3000"
 
   //customers
   getAllCustomers(): Observable<Array<Customer>>{
