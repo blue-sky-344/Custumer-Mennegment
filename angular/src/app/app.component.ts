@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ReceiptComponent } from "./components/receipt/receipt.component";
 import { Receipt } from './modules/receipt.interface';
 import { paymentType } from './modules/enums';
-// import {ExpensesComponent} from "./components/expenses/expenses.component"
+import {ExpensesComponent} from "./components/expenses/expenses.component"
 import {OneExpenseComponent} from './components/one-expense/one-expense.component'
 import { ListExpensesComponent } from "./components/list-expenses/list-expenses.component";
 
@@ -16,7 +16,7 @@ import { NewReceiptComponent } from "./components/new-receipt/new-receipt.compon
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReceiptComponent, OneExpenseComponent, ListExpensesComponent, ReceiptsComponent],
+  imports: [RouterOutlet, ReceiptComponent, OneExpenseComponent,ExpensesComponent, ListExpensesComponent, ReceiptsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
