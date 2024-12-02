@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Customer, Receipt } from './modules/receipt.interface';
+import { Customer, Receipt } from '../modules/receipt.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,9 @@ export class ApiService {
   }
 
   addCustomer(newCustomer:Customer):Observable<Customer>{
-    return this.http.post<Customer>(`${this.baseURL}/customer/addCustomer`,newCustomer);
+    return this.http.post<Customer>(`${this.baseURL}/customer/addCustomer`,newCustomer,
+      {headers:{ 'content-type': 'application/json' }}
+    );
   }
 
   //receipts
